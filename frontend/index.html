@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Частный детский сад "Радуга"</title>
+    <title>Частный детский сад "Солнышко"</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="navbar">
         <div class="container">
             <div class="navbar-content">
                 <div class="logo">
-                    <i class="fas fa-child"></i>
-                    <span>Детский сад "Радуга"</span>
+                    <i class="fas fa-sun"></i>
+                    <span>Детский сад "Солнышко"</span>
                 </div>
                 <button class="hamburger" id="hamburger">
                     <span></span>
@@ -32,11 +31,10 @@
         </div>
     </nav>
 
-    <!-- Герой секция -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Добро пожаловать в детский сад "Радуга"</h1>
-            <p>Место, где развиваются способности вашего ребенка</p>
+            <h1>Добро пожаловать в детский сад "Солнышко"</h1>
+            <p>Место, где развиваются способности вашего ребенка в атмосфере тепла и заботы</p>
             <button class="btn btn-primary" id="applyBtn">Подать заявку на прием</button>
         </div>
         <div class="hero-images">
@@ -44,53 +42,52 @@
         </div>
     </section>
 
-    <!-- Информация о саде -->
     <section class="about">
         <div class="container">
             <h2>О нашем саде</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Частный детский сад "Радуга" - это современное учреждение, где каждый ребенок получает индивидуальный подход и качественное образование. Наша команда профессионалов создает теплую и уютную атмосферу для развития и обучения детей.</p>
-                    <p>Мы предлагаем:</p>
+                    <p>Частный детский сад "Солнышко" - это современное учреждение, где каждый ребенок получает индивидуальный подход и качественное образование. Наша команда профессионалов создает теплую и уютную атмосферу для развития и обучения детей.</p>
+                    <p><strong>Мы предлагаем:</strong></p>
                     <ul>
-                        <li>Развивающие программы для детей от 1 до 7 лет</li>
-                        <li>Профессиональный медицинский уход</li>
-                        <li>Здоровое питание</li>
-                        <li>Дополнительные кружки и занятия</li>
-                        <li>Постоянное взаимодействие с родителями</li>
+                        <li>✓ Развивающие программы для детей от 1 до 7 лет</li>
+                        <li>✓ Профессиональный медицинский уход</li>
+                        <li>✓ Здоровое питание</li>
+                        <li>✓ Дополнительные кружки и занятия</li>
+                        <li>✓ Постоянное взаимодействие с родителями</li>
                     </ul>
                 </div>
-                <div class="about-info">
-                    <div class="info-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Местонахождение</h3>
-                        <p>ул. Цветочная, д. 15, корп. 1</p>
-                        <p>г. Москва</p>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-phone"></i>
-                        <h3>Телефон</h3>
-                        <p>+7 (999) 123-45-67</p>
-                        <p>Пн-Пт: 9:00-19:00</p>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Время работы</h3>
-                        <p>Пн-Пт: 7:00-19:00</p>
-                        <p>Выходные: Сб, Вс</p>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Возрастные группы</h3>
-                        <p>От 1 года до 7 лет</p>
-                        <p>Группы до 15 человек</p>
-                    </div>
+            </div>
+
+            <div class="about-info">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Местонахождение</h3>
+                    <p>ул. Цветочная, д. 15, корп. 1</p>
+                    <p>г. Москва</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (999) 123-45-67</p>
+                    <p>Пн-Пт: 9:00-19:00</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Время работы</h3>
+                    <p>Пн-Пт: 7:00-19:00</p>
+                    <p>Выходные: Сб, Вс</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Возрастные группы</h3>
+                    <p>От 1 года до 7 лет</p>
+                    <p>Группы до 15 человек</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Модальное окно заявки -->
     <div class="modal" id="applicationModal">
         <div class="modal-content">
             <button class="close" id="closeModal">&times;</button>
@@ -102,7 +99,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Номер телефона *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                    <input type="tel" id="phone" name="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="childAge">Возраст ребенка *</label>
@@ -124,19 +121,17 @@
         </div>
     </div>
 
-    <!-- Футер -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>О саде</h3>
-                    <p>Частный детский сад "Радуга" - место для развития вашего ребенка</p>
+                    <p>Детский сад "Солнышко" - место для развития вашего ребенка</p>
                 </div>
                 <div class="footer-section">
                     <h3>Контакты</h3>
                     <p>Телефон: +7 (999) 123-45-67</p>
-                    <p>Email: info@rainbow-kindergarten.ru</p>
-                    <p>Адрес: ул. Цветочная, д. 15</p>
+                    <p>Email: info@solnyshko.ru</p>
                 </div>
                 <div class="footer-section">
                     <h3>Ссылки</h3>
@@ -147,17 +142,9 @@
                         <li><a href="pricing.html">Стоимость</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Соцсети</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Частный детский сад "Радуга". Все права защищены.</p>
+                <p>&copy; 2026 Детский сад "Солнышко". Все права защищены.</p>
             </div>
         </div>
     </footer>

@@ -1,52 +1,75 @@
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const switchToRegister = document.getElementById('switchToRegister');
-const switchToLogin = document.getElementById('switchToLogin');
-const loginFormElement = document.getElementById('loginFormElement');
-const registerFormElement = document.getElementById('registerFormElement');
-
-// Переключение между формами
-switchToRegister.addEventListener('click', (e) => {
-    e.preventDefault();
-    loginForm.style.display = 'none';
-    registerForm.style.display = 'block';
-});
-
-switchToLogin.addEventListener('click', (e) => {
-    e.preventDefault();
-    loginForm.style.display = 'block';
-    registerForm.style.display = 'none';
-});
-
-// Обработка входа
-loginFormElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    
-    // Имитация проверки
-    localStorage.setItem('user', JSON.stringify({ email, name: 'Иван Иванов' }));
-    window.location.href = 'profile.html';
-});
-
-// Обработка регистрации
-registerFormElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('registerName').value;
-    const phone = document.getElementById('registerPhone').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-    const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-    
-    if (password !== passwordConfirm) {
-        alert('Пароли не совпадают!');
-        return;
+const events = [
+    {
+        icon: '🏊',
+        title: 'Поход в бассейн',
+        date: '5 июня 2026',
+        description: 'Увлекательное занятие в бассейне. Дети учатся плавать, развивают уверенность в воде и получают массу удовольствия.',
+        time: '15:00',
+        location: 'Бассейн "Дельфин"'
+    },
+    {
+        icon: '🎬',
+        title: 'Поход в кино',
+        date: '12 июня 2026',
+        description: 'Дети смотрят увлекательный мультфильм в кинотеатре. После фильма - вкусный попкорн!',
+        time: '13:00',
+        location: 'Кинотеатр "СинемаХолл"'
+    },
+    {
+        icon: '🦁',
+        title: 'Контактный зоопарк',
+        date: '18 июня 2026',
+        description: 'Экскурсия в контактный зоопарк. Ребята смогут увидеть животных, покормить их и узнать интересные факты.',
+        time: '10:00',
+        location: 'Зоопарк "Зверинец"'
+    },
+    {
+        icon: '🎨',
+        title: 'Мастер-класс по рисованию',
+        date: '8 июня 2026',
+        description: 'Юные художники создают свои шедевры под руководством профессионального художника. Различные техники рисования.',
+        time: '10:00',
+        location: 'Студия искусств'
+    },
+    {
+        icon: '🎭',
+        title: 'Театральное представление',
+        date: '15 июня 2026',
+        description: 'Представление сказки "Три медведя" в исполнении детей. Отличный способ развить артистические способности.',
+        time: '16:30',
+        location: 'Актовый зал'
+    },
+    {
+        icon: '🏃',
+        title: 'Спортивный праздник',
+        date: '20 июня 2026',
+        description: 'Веселые соревнования, эстафеты и спортивные игры. Дети развивают физические способности и работают в команде.',
+        time: '09:00',
+        location: 'Спортивная площадка'
     }
-    
-    // Имитация регистрации
-    localStorage.setItem('user', JSON.stringify({ name, phone, email }));
-    alert('Регистрация успешна! Добро пожаловать!');
-    window.location.href = 'profile.html';
+];
+
+const eventsGrid = document.getElementById('eventsGrid');
+
+events.forEach(event => {
+    const eventCard = document.createElement('div');
+    eventCard.className = 'event-card';
+    eventCard.innerHTML = `
+        <div class="event-image">${event.icon}</div>
+        <div class="event-content">
+            <span class="event-date">${event.date}</span>
+            <h3 class="event-title">${event.title}</h3>
+            <p class="event-description">${event.description}</p>
+            <div class="event-meta">
+                <div class="event-meta-item">
+                    <i class="fas fa-clock"></i> ${event.time}
+                </div>
+                <div class="event-meta-item">
+                    <i class="fas fa-map-marker-alt"></i> ${event.location}
+                </div>
+            </div>
+            <button class="btn-event">Узнать больше</button>
+        </div>
+    `;
+    eventsGrid.appendChild(eventCard);
 });
