@@ -1,8 +1,7 @@
 // Загрузка персонала из JSON через Fetch API
 async function loadStaff() {
     try {
-        const response = await fetch('./data/staff.json');
-        
+const response = await fetch('/api/staff');        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

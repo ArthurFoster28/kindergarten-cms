@@ -1,8 +1,7 @@
 // Загрузка событий из JSON через Fetch API
 async function loadEvents() {
     try {
-        const response = await fetch('./data/events.json');
-        
+const response = await fetch('/api/events');        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -77,7 +76,7 @@ function openEventModal(event) {
                     <p class="event-modal-time"><i class="fas fa-clock"></i> ${event.time}</p>
                     <p class="event-modal-location"><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
                     <hr>
-                    <p class="event-modal-description">${event.fullDescription}</p>
+                    <p class="event-modal-description">${event.full_description}</p>
                     <button class="btn btn-primary" onclick="closeEventModal()" style="width: 100%; margin-top: 20px;">Закрыть</button>
                 </div>
             </div>

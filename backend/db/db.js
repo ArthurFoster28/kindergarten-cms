@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',         // ваш пользователь pgAdmin
+  user: 'postgres',
   host: 'localhost',
-  database: 'kindergarten_db', // название вашей БД
-  password: 'Swagin16823',   // !!! ВАШ ПАРОЛЬ ОТ PGADMIN !!!
+  database: 'kindergarten_db', // ТОЧНО ТАК ЖЕ, КАК В PGADMIN!
+  password: 'Swagin16823',
   port: 5432,
 });
 
