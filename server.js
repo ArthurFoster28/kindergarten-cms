@@ -138,6 +138,19 @@ app.get('/api/staff', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// Получить ОДНОГО сотрудника для редактирования
+app.get('/api/staff/:id', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM staff WHERE id = $1', [req.params.id]);
+    if (result.rows.length > 0) {
+      const person = result.rows[0];
+      res.json({ ...person, image: person.photo }); // Переименовываем для админки
+    } else {
+      res.status(404).json({ error: 'Сотрудник не найден' });
+    }
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
 app.post('/api/staff', async (req, res) => {
   const { name, position, bio, experience, qualifications, image } = req.body;
   try {
@@ -147,6 +160,7 @@ app.post('/api/staff', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// Обновление сотрудника
 app.put('/api/staff/:id', async (req, res) => {
   const { id } = req.params;
   const { name, position, bio, experience, qualifications, image } = req.body;
@@ -154,7 +168,10 @@ app.put('/api/staff/:id', async (req, res) => {
     await pool.query('UPDATE staff SET name=$1, position=$2, bio=$3, experience=$4, qualifications=$5, photo=$6 WHERE id=$7',
     [name, position, bio, experience, qualifications, image, id]);
     res.json({ success: true });
-  } catch (err) { res.status(500).json({ error: err.message }); }
+  } catch (err) { 
+    console.error('Ошибка обновления сотрудника:', err.message);
+    res.status(500).json({ error: err.message }); 
+  }
 });
 
 app.delete('/api/staff/:id', async (req, res) => {
@@ -172,6 +189,18 @@ app.get('/api/pricing', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// Получить ОДНУ услугу для редактирования
+app.get('/api/pricing/:id', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM pricing WHERE id = $1', [req.params.id]);
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).json({ error: 'Услуга не найдена' });
+    }
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
 app.post('/api/pricing', async (req, res) => {
   const { name, description, price, category } = req.body;
   try {
@@ -181,6 +210,7 @@ app.post('/api/pricing', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// Обновление услуги
 app.put('/api/pricing/:id', async (req, res) => {
   const { id } = req.params;
   const { name, description, price, category } = req.body;
@@ -188,7 +218,10 @@ app.put('/api/pricing/:id', async (req, res) => {
     await pool.query('UPDATE pricing SET name=$1, description=$2, price=$3, category=$4 WHERE id=$5',
     [name, description, price, category, id]);
     res.json({ success: true });
-  } catch (err) { res.status(500).json({ error: err.message }); }
+  } catch (err) { 
+    console.error('Ошибка обновления услуги:', err.message);
+    res.status(500).json({ error: err.message }); 
+  }
 });
 
 app.delete('/api/pricing/:id', async (req, res) => {
