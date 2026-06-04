@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора - Детский сад Солнышко</title>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Боковое меню -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>☀️ Солнышко</h2>
+                <p>Панель администратора</p>
+            </div>
+            <nav class="admin-menu">
+                <a href="#events" class="menu-item active" onclick="switchTab('events')">📅 События</a>
+                <a href="#staff" class="menu-item" onclick="switchTab('staff')">👨‍🏫 Персонал</a>
+                <a href="#pricing" class="menu-item" onclick="switchTab('pricing')">💰 Услуги</a>
+                <a href="#admins" class="menu-item" onclick="switchTab('admins')">🔐 Администраторы</a>
+            </nav>
+            <button class="btn-logout" onclick="logout()">🚪 Выход</button>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="admin-main">
+            <!-- СОБЫТИЯ -->
+            <section id="events-section" class="admin-section active">
+                <h1>📅 Управление событиями</h1>
+                
+                <button class="btn-primary" onclick="openEventModal()">+ Добавить событие</button>
+                
+                <div class="events-list" id="events-list">
+                    <p>Загрузка...</p>
+                </div>
+            </section>
+
+            <!-- ПЕРСОНАЛ -->
+            <section id="staff-section" class="admin-section">
+                <h1>👨‍🏫 Управление персоналом</h1>
+                
+                <button class="btn-primary" onclick="openStaffModal()">+ Добавить сотрудника</button>
+                
+                <div class="staff-list" id="staff-list">
+                    <p>Загрузка...</p>
+                </div>
+            </section>
+
+            <!-- УСЛУГИ -->
+            <section id="pricing-section" class="admin-section">
+                <h1>💰 Управление услугами</h1>
+                
+                <button class="btn-primary" onclick="openPricingModal()">+ Добавить услугу</button>
+                
+                <div class="pricing-list" id="pricing-list">
+                    <p>Загрузка...</p>
+                </div>
+            </section>
+
+            <!-- АДМИНИСТРАТОРЫ -->
+            <section id="admins-section" class="admin-section">
+                <h1>🔐 Администраторы</h1>
+                
+                <button class="btn-primary" onclick="openAdminModal()">+ Добавить администратора</button>
+                
+                <div class="admins-list" id="admins-list">
+                    <p>Загрузка...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ СОБЫТИЙ -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('event-modal')">&times;</span>
+            <h2>Событие</h2>
+            <form id="event-form" onsubmit="saveEvent(event)">
+                <input type="hidden" id="event-id">
+                <label>Название:</label>
+                <input type="text" id="event-title" required>
+                
+                <label>Короткое описание:</label>
+                <textarea id="event-description" required></textarea>
+                
+                <label>Полное описание:</label>
+                <textarea id="event-full-description" required></textarea>
+                
+                <label>Дата:</label>
+                <input type="text" id="event-date" required>
+                
+                <label>Время:</label>
+                <input type="text" id="event-time" required>
+                
+                <label>Место:</label>
+                <input type="text" id="event-location" required>
+                
+                <label>Изображение (URL):</label>
+                <input type="text" id="event-image" required>
+                
+                <button type="submit" class="btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПЕРСОНАЛА -->
+    <div id="staff-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('staff-modal')">&times;</span>
+            <h2>Сотрудник</h2>
+            <form id="staff-form" onsubmit="saveStaff(event)">
+                <input type="hidden" id="staff-id">
+                <label>Имя:</label>
+                <input type="text" id="staff-name" required>
+                
+                <label>Должность:</label>
+                <input type="text" id="staff-position" required>
+                
+                <label>Биография:</label>
+                <textarea id="staff-bio" required></textarea>
+                
+                <label>Опыт:</label>
+                <input type="text" id="staff-experience" required>
+                
+                <label>Квалификация:</label>
+                <textarea id="staff-qualifications" required></textarea>
+                
+                <label>Изображение (URL):</label>
+                <input type="text" id="staff-image" required>
+                
+                <button type="submit" class="btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ УСЛУГ -->
+    <div id="pricing-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('pricing-modal')">&times;</span>
+            <h2>Услуга</h2>
+            <form id="pricing-form" onsubmit="savePricing(event)">
+                <input type="hidden" id="pricing-id">
+                <label>Название:</label>
+                <input type="text" id="pricing-name" required>
+                
+                <label>Описание:</label>
+                <textarea id="pricing-description" required></textarea>
+                
+                <label>Цена:</label>
+                <input type="text" id="pricing-price" required>
+                
+                <label>Категория:</label>
+                <select id="pricing-category" required>
+                    <option>Основные услуги</option>
+                    <option>Дополнительные кружки</option>
+                    <option>Дополнительные услуги</option>
+                </select>
+                
+                <button type="submit" class="btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ АДМИНИСТРАТОРОВ -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('admin-modal')">&times;</span>
+            <h2>Администратор</h2>
+            <form id="admin-form" onsubmit="saveAdmin(event)">
+                <input type="hidden" id="admin-id">
+                <label>Логин:</label>
+                <input type="text" id="admin-username" required>
+                
+                <label>Пароль:</label>
+                <input type="password" id="admin-password" required>
+                
+                <label>Email:</label>
+                <input type="email" id="admin-email" required>
+                
+                <button type="submit" class="btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/admin.js"></script>
+</body>
+</html>

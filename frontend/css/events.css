@@ -109,3 +109,84 @@
         grid-template-columns: 1fr;
     }
 }
+/* МОДАЛЬНОЕ ОКНО ДЛЯ СОБЫТИЙ */
+.event-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.event-modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.event-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+}
+
+.event-modal-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.event-modal-info h2 {
+    color: var(--text-dark);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.event-modal-date,
+.event-modal-time,
+.event-modal-location {
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-modal-date i,
+.event-modal-time i,
+.event-modal-location i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+.event-modal-description {
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .event-modal-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .event-modal-image {
+        height: 300px;
+    }
+
+    .event-modal-content {
+        width: 95%;
+        margin: 20% auto;
+    }
+}
